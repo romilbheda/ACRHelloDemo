@@ -2,6 +2,7 @@
 #For more information, please see http://aka.ms/containercompat 
 
 FROM microsoft/dotnet:2.1-aspnetcore-runtime-nanoserver-sac2016 AS base
+ENV DOCKER_REGISTRY <acr-name>.azurecr.io
 WORKDIR /app
 EXPOSE 80
 EXPOSE 443
