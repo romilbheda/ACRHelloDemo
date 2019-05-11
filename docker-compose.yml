@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  acrhellodemo:
+    image: ${DOCKER_REGISTRY-}acrhellodemo
+    build:
+      context: .
+      dockerfile: ACRHelloDemo\Dockerfile

@@ -1,0 +1,7 @@
+C:\Users\demouser\source\repos\ACRHelloDemo\bin\Debug\ACRHelloDemo.Views.dll
+C:\Users\demouser\source\repos\ACRHelloDemo\bin\Debug\ACRHelloDemo.Views.pdb
+C:\Users\demouser\source\repos\ACRHelloDemo\bin\Debug\ACRHelloDemo.dll
+C:\Users\demouser\source\repos\ACRHelloDemo\bin\Debug\ACRHelloDemo.pdb
+C:\Users\demouser\source\repos\ACRHelloDemo\obj\Debug\docker-compose.dcprojAssemblyReference.cache
+C:\Users\demouser\source\repos\ACRHelloDemo\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+C:\Users\demouser\source\repos\ACRHelloDemo\obj\Debug\docker-compose.dcproj.CopyComplete
