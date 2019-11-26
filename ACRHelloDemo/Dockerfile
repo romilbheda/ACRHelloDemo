@@ -1,24 +1,24 @@
-#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-#For more information, please see http://aka.ms/containercompat 
-
-FROM microsoft/dotnet:2.1-aspnetcore-runtime-nanoserver-sac2016 AS base
-ENV DOCKER_REGISTRY <acr-name>.azurecr.io
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+# Update <acrName> with the name of your registry
+# Example: uniqueregistryname.azurecr.io
+ENV DOCKER_REGISTRY <acrName>.azurecr.io
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
-FROM microsoft/dotnet:2.1-sdk-nanoserver-sac2016 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
-COPY ACRHelloDemo/ACRHelloDemo.csproj ACRHelloDemo/
-RUN dotnet restore ACRHelloDemo/ACRHelloDemo.csproj
+COPY *.sln ./
+COPY AcrHelloworld/AcrHelloworld.csproj AcrHelloworld/
+COPY docker-compose.dcproj ./
+RUN dotnet restore AcrHelloworld/AcrHelloworld.csproj
 COPY . .
-WORKDIR /src/ACRHelloDemo
-RUN dotnet build ACRHelloDemo.csproj -c Release -o /app
+WORKDIR /src/AcrHelloworld
+RUN dotnet build -c Release -o /app
 
 FROM build AS publish
-RUN dotnet publish ACRHelloDemo.csproj -c Release -o /app
+RUN dotnet publish -c Release -o /app
 
-FROM base AS final
+FROM base AS production
 WORKDIR /app
 COPY --from=publish /app .
-ENTRYPOINT ["dotnet", "ACRHelloDemo.dll"]
+ENTRYPOINT ["dotnet", "AcrHelloworld.dll"]
